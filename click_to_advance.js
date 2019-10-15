@@ -14,6 +14,13 @@ function ClickToAdvance (frame_images, target_div, x, y) {
     this.img.style.left = x + "px";
     this.img.style.top = y + "px";
     target_div.appendChild(this.img);
+    this.handleEvent = function(){
+        if(this.frame < this.images.length - 1){
+            this.frame = this.frame + 1;
+            this.img.src = this.images[this.frame];
+        }
+        
+    };
 
     /* TODO: Implement a prototype method named handleEvent (see Note 1 below).
      * "handleEvent" should advance to the next frame in the sequence.
@@ -27,7 +34,7 @@ function ClickToAdvance (frame_images, target_div, x, y) {
      * line below to add this object as the click event listener for the image.
      */
      
-     // this.img.addEventListener("click", this);            // (see Note 1 below)
+     this.img.addEventListener("click", this);            // (see Note 1 below)
 }
 
 for (let i = 0; i < 5; i++) {
